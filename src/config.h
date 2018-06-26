@@ -1,0 +1,1 @@
+#define RUN_WIN32_PLATFORM
