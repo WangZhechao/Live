@@ -1,4 +1,4 @@
-﻿# CMakeList.txt: live 的 CMake 项目，包括源和定义
+# CMakeList.txt: live 的 CMake 项目，包括源和定义
 # 此处特定于项目的逻辑。
 #
 cmake_minimum_required (VERSION 2.8)
