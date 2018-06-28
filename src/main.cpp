@@ -3,12 +3,12 @@
 #include "game.h"
 #include "options.h"
 
-using namespace Live;
+using namespace Alive;
 
 int main()
 {
-	auto game = Game::getInstance();
-	if (game->init(std::unique_ptr<Options>(new Options())))
+	auto game = Engine::Game::getInstance();
+	if (game->init(std::unique_ptr<Engine::Options>(new Engine::Options())))
 	{
 		//game->setState();
 		game->run();

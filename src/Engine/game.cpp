@@ -1,42 +1,53 @@
 #include "game.h"
 #include "options.h"
+#include "renderer.h"
 
-namespace Live
+namespace Alive
 {
-	Game::Game()
+	namespace Engine
 	{
+		Game::Game()
+		{
 
-	}
+		}
 
-	Game::~Game()
-	{
+		Game::~Game()
+		{
+			if (_renderer) {
+				_renderer->uninit();
+			}
+		}
 
-	}
-
-	Game* Game::getInstance()
-	{
-		static Game instance;
-		return &instance;
-	}
+		Game* Game::getInstance()
+		{
+			static Game instance;
+			return &instance;
+		}
 
 
-	bool Game::init(std::unique_ptr<Options> options)
-	{
-		if (_initialized) {
+		bool Game::init(std::unique_ptr<Options> options)
+		{
+			if (_initialized) {
+				return true;
+			}
+			_initialized = true;
+
+
+			_options = std::move(options);
+
+			_renderer = std::make_unique<Renderer>(
+				_options->screenWidth(), _options->screenHeight());
+			if (_renderer->init() < 0) {
+				return false;
+			}
+
 			return true;
 		}
-		_initialized = true;
 
 
-		_options = std::move(options);
-
-
-		return true;
-	}
-
-
-	void Game::run()
-	{
-
+		void Game::run()
+		{
+			SDL_Delay(4000);
+		}
 	}
 }

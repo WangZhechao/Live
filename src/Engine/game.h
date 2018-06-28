@@ -1,31 +1,36 @@
-#ifndef _LIVE_GAME_H_
-#define _LIVE_GAME_H_
+#ifndef _ALIVE_GAME_H_
+#define _ALIVE_GAME_H_
 
 #include <memory>
 
-namespace Live
+namespace Alive
 {
-	class Options;
-
-	class Game
+	namespace Engine
 	{
-	public:
-		static Game* getInstance();
+		class Options;
+		class Renderer;
 
-	public:
-		bool init(std::unique_ptr<Options> options);
-		void run();
+		class Game
+		{
+		public:
+			static Game* getInstance();
 
-	protected:
-		bool _initialized = false;
-		std::unique_ptr<Options> _options;
+		public:
+			bool init(std::unique_ptr<Options> options);
+			void run();
 
-	private:
-		Game();
-		~Game();
-		Game(Game const&) = delete;
-		void operator=(Game const&) = delete;
-	};
+		protected:
+			bool _initialized = false;
+			std::unique_ptr<Options> _options;
+			std::unique_ptr<Renderer> _renderer;
+
+		private:
+			Game();
+			~Game();
+			Game(Game const&) = delete;
+			void operator=(Game const&) = delete;
+		};
+	}
 }
 
 #endif

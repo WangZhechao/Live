@@ -1,20 +1,32 @@
-set (LIVE_SRCS_BASE "${CMAKE_SOURCE_DIR}/src")
+set (LIVE_SRCS_DIR			"${CMAKE_SOURCE_DIR}/src")
+set (LIVE_SRCS_DIR_BASE		"${LIVE_SRCS_DIR}/Base")
+set (LIVE_SRCS_DIR_ENGINE	"${LIVE_SRCS_DIR}/Engine")
 
-include_directories(${LIVE_SRCS_BASE})
-include_directories(${LIVE_SRCS_BASE}/Engine)
+
+include_directories(${LIVE_SRCS_DIR})
+include_directories(${LIVE_SRCS_DIR_BASE})
+include_directories(${LIVE_SRCS_DIR_ENGINE})
 
 
 set (LIVE_SRCS_MAIN 
-	"${LIVE_SRCS_BASE}/main.cpp"
+	"${LIVE_SRCS_DIR}/main.cpp"
 )
 
 
-set (LIVE_SRCS_GAME 
-	"${LIVE_SRCS_BASE}/Engine/game.cpp"
-	"${LIVE_SRCS_BASE}/Engine/options.cpp"
+set (LIVE_SRC_BASE
+	"${LIVE_SRCS_DIR_BASE}/size.cpp"
 )
+
+
+set (LIVE_SRCS_ENGINE
+	"${LIVE_SRCS_DIR_ENGINE}/game.cpp"
+	"${LIVE_SRCS_DIR_ENGINE}/options.cpp"
+	"${LIVE_SRCS_DIR_ENGINE}/renderer.cpp"
+)
+
 
 add_executable(live 
 	${LIVE_SRCS_MAIN}
-	${LIVE_SRCS_GAME}
+	${LIVE_SRC_BASE}
+	${LIVE_SRCS_ENGINE}
 )

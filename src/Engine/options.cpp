@@ -1,26 +1,29 @@
 #include "options.h"
 
-namespace Live
+namespace Alive
 {
-	Options::Options()
+	namespace Engine
 	{
+		Options::Options()
+		{
 
-	}
-
-
-	Options::~Options()
-	{
-
-	}
+		}
 
 
-	unsigned int Options::screenWidth() const
-	{
-		return _screenWidth;
-	}
+		Options::~Options()
+		{
 
-	unsigned int Options::screenHeight() const
-	{
-		return _screenHeight;
+		}
+
+
+		unsigned int Options::screenWidth() const
+		{
+			return _screenWidth;
+		}
+
+		unsigned int Options::screenHeight() const
+		{
+			return _screenHeight;
+		}
 	}
 }

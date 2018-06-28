@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 # 工程名称
-project(LIVE)
+project(ALIVE)
 
 
 # 配置文件
@@ -14,9 +14,17 @@ configure_file(
 )
 
 
+# 第三方库
+set (LIVE_SRCS_3RDPARTY		"${CMAKE_SOURCE_DIR}/3rdParty")
+include_directories(${LIVE_SRCS_3RDPARTY})
+
+#TODO: delete it!
+link_directories("F:\\psv\\live\\alive\\build")
+link_libraries("SDL2.lib")
+
+
 # 编译平台
 option (RUN_WIN32_PLATFORM "run win32 platform" on)
-
 
 if (RUN_WIN32_PLATFORM)
 	message(status "current platform: Windows")
