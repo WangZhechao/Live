@@ -5,7 +5,7 @@
 
 using namespace Alive;
 
-int main()
+int main(int argc, char* argv[])
 {
 	auto game = Engine::Game::getInstance();
 	if (game->init(std::unique_ptr<Engine::Options>(new Engine::Options())))

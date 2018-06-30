@@ -22,10 +22,11 @@ set (LIVE_SRCS_ENGINE
 	"${LIVE_SRCS_DIR_ENGINE}/game.cpp"
 	"${LIVE_SRCS_DIR_ENGINE}/options.cpp"
 	"${LIVE_SRCS_DIR_ENGINE}/renderer.cpp"
+	"${LIVE_SRCS_DIR_ENGINE}/crossplatform.cpp"
 )
 
 
-add_executable(live 
+add_executable(alive WIN32 
 	${LIVE_SRCS_MAIN}
 	${LIVE_SRC_BASE}
 	${LIVE_SRCS_ENGINE}

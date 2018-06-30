@@ -1,6 +1,7 @@
 #include "game.h"
 #include "options.h"
 #include "renderer.h"
+#include "crossplatform.h"
 
 namespace Alive
 {
@@ -47,7 +48,52 @@ namespace Alive
 
 		void Game::run()
 		{
-			SDL_Delay(4000);
+			while (!_quit)
+			{
+				processInput();
+				update();
+				render();
+
+				SDL_Delay(1);
+			}
+		}
+
+
+		void Game::processInput()
+		{
+			while (SDL_PollEvent(&_event))
+			{
+				if (CrossPlatform::isQuitShortcut(_event))
+					_event.type = SDL_QUIT;
+
+				switch (_event.type)
+				{
+				case SDL_QUIT:
+					quit();
+					break;
+
+				default:
+					break;
+				}
+			}
+		}
+
+
+		void Game::update()
+		{
+
+		}
+
+
+		void Game::render()
+		{
+
+		}
+
+
+		void Game::quit()
+		{
+			_quit = true;
 		}
 	}
 }
